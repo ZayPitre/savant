@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import MarketOverview from './pages/MarketOverview';
 import Analysis from './pages/Analysis';
+import Screener from './pages/Screener';
 
 // Create QueryClient instance
 const queryClient = new QueryClient();
@@ -16,18 +17,62 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#2196f3',
+      main: '#64b5f6', // Lighter blue
     },
     secondary: {
-      main: '#f50057',
+      main: '#f06292', // Softer pink
     },
     background: {
-      default: '#121212',
-      paper: '#1e1e1e',
+      default: '#0a1929', // Dark navy background
+      paper: 'rgba(26, 32, 53, 0.8)', // Semi-transparent navy for frosted glass effect
+    },
+    text: {
+      primary: '#e0e0e0',
+      secondary: '#b0b0b0',
     },
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+  },
+  shape: {
+    borderRadius: 12, // Increased border radius for rounded corners
+  },
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backdropFilter: 'blur(10px)',
+          borderRadius: 16,
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'rgba(26, 32, 53, 0.75)', // Glass-like background
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          backdropFilter: 'blur(10px)',
+          borderRadius: 16,
+          background: 'rgba(26, 32, 53, 0.75)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 28,
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: 16,
+        },
+      },
+    },
   },
 });
 
@@ -43,7 +88,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/market-overview" element={<MarketOverview />} />
               <Route path="/analysis" element={<Analysis />} />
-              <Route path="/screener" element={<div>Stock Screener Coming Soon</div>} />
+              <Route path="/screener" element={<Screener />} />
               <Route path="/watchlist" element={<div>Watchlist Coming Soon</div>} />
             </Routes>
           </div>
